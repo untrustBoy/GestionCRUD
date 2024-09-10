@@ -1,0 +1,22 @@
+<div class="row mt-5">
+    <div class="col-lg-4 offset-lg-4">
+
+        <div class="card border-primary mb-3" >
+            <div class="card-header text-center">{{ op }} Cliente</div>
+            <div class="card-body">
+                <form [formGroup]="formCustomer" (ngSubmit)="addCustomer()">
+                    <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
+                    <span *ngIf="formCustomer.get('name')?.hasError('required') && formCustomer.get('name')?.touched">El campo nombre es obligatorio</span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button type="button" routerLink="/" class="btn btn-secondary">Volver</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-primary" [disabled]="formCustomer.invalid">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row mt-5">
+    <div class="col-lg-4 offset-lg-4">
+
+        <div class="card border-primary mb-3" >
+            <div class="card-header text-center">{{ op }} Cliente</div>
+            <div class="card-body">
+                <form [formGroup]="formPost" (ngSubmit)="addPost()">
+                    <div class="row">
+                        <input type="text" class="form-control" placeholder="Titulo" formControlName="title">
+                        <span *ngIf="formPost.get('name')?.hasError('required') && formPost.get('title')?.touched">El campo nombre es obligatorio</span>
+                    </div>
+                    <div class="row">
+                        <label for="body" class="form-label mt-4">Descripcion</label>
+                        <textarea class="form-control" id="body" rows="3" formControlName="body" placeholder="Descripción" ></textarea>
+                        <span *ngIf="formPost.get('name')?.hasError('required') && formPost.get('body')?.touched">El campo nombre es obligatorio</span>
+                    </div>
+                    <div class="row">
+                        <label for="selectCategory" class="form-label mt-4">Categoria</label>
+                        <select class="form-select" id="selectCategory" formControlName="category">
+                            <option value="1">Farandula</option>
+                            <option value="2">Politica</option>
+                            <option value="3">Futbol</option>
+                        </select>
+                        <span *ngIf="formPost.get('name')?.hasError('required') && formPost.get('category')?.touched">El campo nombre es obligatorio</span>
+                    </div>
+                    <div class="row">                        
+                        <label for="selectCliente" class="form-label mt-4">Cliente</label>
+                        <select class="form-select" id="selectCliente" formControlName="customer">
+                            <option  *ngFor="let client of listCustomer" value="{{client.customerId}}">{{client.name}}</option>
+                        </select>
+                        <span *ngIf="formPost.get('name')?.hasError('required') && formPost.get('customer')?.touched">El campo nombre es obligatorio</span>
+                    </div>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button type="button" routerLink="/" class="btn btn-secondary">Volver</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-primary" [disabled]="formPost.invalid">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

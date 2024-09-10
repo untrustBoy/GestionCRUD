@@ -1,0 +1,20 @@
+<div class="container">
+    <button id="add" type="button" class="btn btn-outline-secondary" routerLink="/add"  >Agregar Cliente</button>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of listCustomer" class="table-light">
+            <td>{{ customer.name }}</td>
+            <td>
+                <button [routerLink]="['/edit', customer.customerId]" type="button" class="btn btn-outline-warning btn-sm">Editar</button>
+                <button (click)="deleteCustomer(customer.customerId!)" type="button" class="btn btn-outline-danger btn-sm ms-2">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
